@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnBoardingScreen from "../screens/OnBoardingScreen";
 import RegisterMenu from "../screens/RegisterMenu";
 import Register from "../screens/Register";
+import RegisterBuyer from "../screens/RegisterBuyer";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const AuthStack = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="RegisterMenu" component={RegisterMenu} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="RegisterBuyer" component={RegisterBuyer}/>
     </Stack.Navigator>
   );
 };

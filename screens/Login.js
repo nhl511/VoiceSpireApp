@@ -5,6 +5,7 @@ import {
   Pressable,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from "react-native";
 
@@ -12,7 +13,6 @@ import tw from "twrnc";
 const Login = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
-      behavior="padding"
       style={tw`flex-1 justify-center items-center px-8 bg-[#ffd600]`}
     >
       <Image
