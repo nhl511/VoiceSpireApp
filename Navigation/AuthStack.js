@@ -1,7 +1,6 @@
 import React from "react";
 import Login from "../screens/Login";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { createDrawerNavigator } from "@react-navigation/drawer";
 import OnBoardingScreen from "../screens/OnBoardingScreen";
 import RegisterMenu from "../screens/RegisterMenu";
 import Register from "../screens/Register";
