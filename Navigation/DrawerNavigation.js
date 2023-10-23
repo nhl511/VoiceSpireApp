@@ -8,6 +8,7 @@ import TrackingProjectsForSeller from "../screens/TrackingProjectsForSeller";
 import UploadProjects from "../screens/UploadProject";
 import Voices from "../screens/Voices";
 import TrackingProjectForBuyer from "../screens/TrackingProjectsForBuyer";
+import ProjectDescriptionForApplying from "../screens/PostDescriptionForApplying";
 import CustomDrawer from "../components/CustomDrawer";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -17,7 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 
-const AppStack = () => {
+const DrawerNavigation = () => {
   const { userInfo } = useContext(AuthContext);
 
   return (
@@ -112,4 +113,4 @@ const AppStack = () => {
   );
 };
 
-export default AppStack;
+export default DrawerNavigation;

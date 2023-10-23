@@ -7,7 +7,7 @@ import Register from "../screens/Register";
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+const StackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
@@ -18,4 +18,4 @@ const AuthStack = () => {
   );
 };
 
-export default AuthStack;
+export default StackNavigation;
