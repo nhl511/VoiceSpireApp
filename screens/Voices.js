@@ -1,9 +1,9 @@
 import React from "react";
 import { SafeAreaView, Text, View } from "react-native";
-import tw from "twrnc";
 import Header from "../components/Header";
+import tw from "twrnc";
 
-const Posts = ({ navigation }) => {
+const Voices = ({ navigation }) => {
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <Header navigation={navigation} />
@@ -11,4 +11,4 @@ const Posts = ({ navigation }) => {
   );
 };
 
-export default Posts;
+export default Voices;
