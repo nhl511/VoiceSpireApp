@@ -163,4 +163,4 @@ const RegisterBuyer = () => {
     )
 }
 
-export default RegisterBuyer
+// export default RegisterBuyer

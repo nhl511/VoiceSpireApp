@@ -17,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 
-const AppStack = () => {
+const DrawerNavigation = () => {
   const { userInfo } = useContext(AuthContext);
 
   return (
@@ -112,4 +112,4 @@ const AppStack = () => {
   );
 };
 
-export default AppStack;
+export default DrawerNavigation;

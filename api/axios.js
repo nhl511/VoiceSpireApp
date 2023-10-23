@@ -15,3 +15,11 @@ export const postLogin = async (email, password) => {
   });
   return response.data;
 };
+
+export const getPosts = async (currentPage, PageSize) => {
+  const response = await axiosOne.get(
+    `/api/VoiceProjects/SearchByFilter/${currentPage},${PageSize}`
+  );
+  const valuesArray = Object.values(response.data.results);
+  return valuesArray;
+};

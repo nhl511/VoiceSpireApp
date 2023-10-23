@@ -8,16 +8,16 @@ import RegisterBuyer from "../screens/RegisterBuyer";
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+const StackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="RegisterMenu" component={RegisterMenu} />
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="RegisterBuyer" component={RegisterBuyer}/>
+      {/* <Stack.Screen name="Register" component={Register} /> */}
+      {/* <Stack.Screen name="RegisterBuyer" component={RegisterBuyer}/> */}
     </Stack.Navigator>
   );
 };
 
-export default AuthStack;
+export default StackNavigation;

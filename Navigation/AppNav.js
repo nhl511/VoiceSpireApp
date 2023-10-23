@@ -1,10 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useContext } from "react";
-import AuthStack from "./AuthStack";
+import StackNavigation from "./StackNavigation";
 import { AuthContext } from "../context/AuthContext";
 import { ActivityIndicator, View } from "react-native";
 import tw from "twrnc";
-import AppStack from "./AppStack";
+import DrawerNavigation from "./DrawerNavigation";
+import AuthenticatedStackNavigation from "./AuthenticatedStackNavigation";
 const AppNav = () => {
   const { isLoading, userToken } = useContext(AuthContext);
   if (isLoading) {
@@ -16,7 +17,7 @@ const AppNav = () => {
   }
   return (
     <NavigationContainer>
-      {userToken !== null ? <AppStack /> : <AuthStack />}
+      {userToken ? <AuthenticatedStackNavigation /> : <StackNavigation />}
     </NavigationContainer>
   );
 };
