@@ -17,7 +17,7 @@ const RegisterMenu = ({ navigation }) => {
             <Text style={tw`text-lg text-center`}>Tạo tài khoản giọng đọc</Text>
           </View>
         </Pressable>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate('RegisterBuyer')}>
           <View
             style={tw`w-40 h-40 bg-white flex justify-center items-center gap-5 p-4 rounded-3xl`}
           >
