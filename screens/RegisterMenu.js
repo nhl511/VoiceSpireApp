@@ -9,24 +9,22 @@ const RegisterMenu = ({ navigation }) => {
   return (
     <View style={tw`flex-1 bg-[#ffd600] justify-center items-center`}>
       <View style={tw`flex-row gap-5`}>
-        <Pressable onPress={() => navigation.navigate("Register")}>
-          <View
-            style={tw`w-40 h-40 bg-white flex justify-center items-center gap-5 p-4 rounded-3xl`}
-          >
-            <Entypo name="mic" size={50} color="black" />
-            <Text style={tw`text-lg text-center`}>Tạo tài khoản giọng đọc</Text>
-          </View>
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate('RegisterBuyer')}>
-          <View
-            style={tw`w-40 h-40 bg-white flex justify-center items-center gap-5 p-4 rounded-3xl`}
-          >
-            <AntDesign name="notification" size={50} color="black" />
-            <Text style={tw`text-lg text-center`}>
-              Tạo tài khoản tuyển dụng
-            </Text>
-          </View>
-        </Pressable>
+        {/* <Pressable onPress={() => navigation.navigate("Register")}> */}
+        <View
+          style={tw`w-40 h-40 bg-white flex justify-center items-center gap-5 p-4 rounded-3xl`}
+        >
+          <Entypo name="mic" size={50} color="black" />
+          <Text style={tw`text-lg text-center`}>Tạo tài khoản giọng đọc</Text>
+        </View>
+        {/* </Pressable> */}
+        {/* <Pressable onPress={() => navigation.navigate('RegisterBuyer')}> */}
+        <View
+          style={tw`w-40 h-40 bg-white flex justify-center items-center gap-5 p-4 rounded-3xl`}
+        >
+          <AntDesign name="notification" size={50} color="black" />
+          <Text style={tw`text-lg text-center`}>Tạo tài khoản tuyển dụng</Text>
+        </View>
+        {/* </Pressable> */}
       </View>
       <Pressable onPress={() => navigation.navigate("Login")}>
         <View style={tw`mt-20 flex-row items-center gap-2`}>

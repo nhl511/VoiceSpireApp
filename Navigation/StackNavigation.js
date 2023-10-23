@@ -14,8 +14,8 @@ const StackNavigation = () => {
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="RegisterMenu" component={RegisterMenu} />
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="RegisterBuyer" component={RegisterBuyer}/>
+      {/* <Stack.Screen name="Register" component={Register} /> */}
+      {/* <Stack.Screen name="RegisterBuyer" component={RegisterBuyer}/> */}
     </Stack.Navigator>
   );
 };

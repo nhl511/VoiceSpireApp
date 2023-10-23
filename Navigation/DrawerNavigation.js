@@ -8,7 +8,6 @@ import TrackingProjectsForSeller from "../screens/TrackingProjectsForSeller";
 import UploadProjects from "../screens/UploadProject";
 import Voices from "../screens/Voices";
 import TrackingProjectForBuyer from "../screens/TrackingProjectsForBuyer";
-import ProjectDescriptionForApplying from "../screens/PostDescriptionForApplying";
 import CustomDrawer from "../components/CustomDrawer";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
