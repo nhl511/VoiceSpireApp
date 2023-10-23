@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Pressable, SafeAreaView, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
 
 import tw from "twrnc";
+import { AuthContext } from "../context/AuthContext";
+import Header from "../components/Header";
 const Home = ({ navigation }) => {
+  const { userInfo } = useContext(AuthContext);
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <View style={tw`flex-row justify-between px-4`}>
-        <Pressable onPress={() => navigation.openDrawer()}>
-          <Feather name="menu" size={24} color="black" />
-        </Pressable>
-        <Text style={tw`text-xl font-bold`}>Voice Spire</Text>
+      <Header navigation={navigation} />
+      <View>
+        {userInfo.role === "seller" ? (
+          <Text>{userInfo.voiceSeller.fullname}</Text>
+        ) : (
+          <Text>{userInfo.buyer.fullname}</Text>
+        )}
       </View>
     </SafeAreaView>
   );

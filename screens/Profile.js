@@ -1,12 +1,13 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import tw from "twrnc";
+import Header from "../components/Header";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   return (
-    <View style={tw`flex-1 justify-center items-center`}>
-      <Text>Profiel Screen</Text>
-    </View>
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
+      <Header navigation={navigation} />
+    </SafeAreaView>
   );
 };
 

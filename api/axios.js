@@ -7,3 +7,11 @@ export default axios.create({
 export const axiosOne = axios.create({
   baseURL: BASE_URL,
 });
+
+export const postLogin = async (email, password) => {
+  const response = await axiosOne.post(`/api/VoiceSellers/Login`, {
+    email,
+    password,
+  });
+  return response.data;
+};
