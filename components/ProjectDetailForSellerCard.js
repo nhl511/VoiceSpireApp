@@ -5,7 +5,6 @@ import AudioPlayer from "./AudioPlayer";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const ProjectDetailForSellerCard = ({ voice }) => {
-  console.log(voice.linkVoice);
   return (
     <>
       <View style={tw`border py-2 px-4 flex-row items-center justify-between`}>

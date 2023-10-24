@@ -43,6 +43,14 @@ export const getAllJobsForTracking = async (
   return valuesArray;
 };
 
+export const getAllProjectsForTracking = async (buyerId) => {
+  const response = await axiosOne.get(
+    `/api/Buyers/GetProjectByBuyerId/${buyerId}`
+  );
+
+  return response.data;
+};
+
 export const getOfficialVoices = async (projectId) => {
   const response = await axiosOne.get(
     `/api/VoiceProjects/GetTransactionOfProject/${projectId}`
