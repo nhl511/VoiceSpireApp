@@ -13,7 +13,7 @@ import PostCard from "../components/PostCard";
 import { getPosts } from "../api/axios";
 
 const Posts = ({ navigation }) => {
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getPosts(1, 100).then((postsData) => {
@@ -36,7 +36,7 @@ const Posts = ({ navigation }) => {
               return (
                 <Pressable
                   onPress={() => {
-                    navigation.navigate("pdfa");
+                    navigation.navigate("pdfa", { item });
                   }}
                 >
                   <PostCard post={item} />
@@ -45,7 +45,7 @@ const Posts = ({ navigation }) => {
             }}
             ItemSeparatorComponent={<View style={tw`h-4`} />}
             ListEmptyComponent={
-              <Text style={tw`text-center`}>Chưa có yêu thích</Text>
+              <Text style={tw`text-center`}>Chưa có dự án nào</Text>
             }
           />
         </View>

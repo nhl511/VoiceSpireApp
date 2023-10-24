@@ -6,7 +6,7 @@ import tw from "twrnc";
 
 const PostCard = ({ post }) => {
   return (
-    <View style={tw`flex-row border h-25`}>
+    <View style={tw`flex-row gap-2 h-25`}>
       <View style={tw`h-full`}>
         <Image
           source={{
