@@ -6,6 +6,8 @@ import PostDescriptionForApplying from "../screens/PostDescriptionForApplying";
 import Applying from "../screens/Applying";
 import ProjectDetailForSeller from "../screens/ProjectDetailForSeller";
 import Processing from "../screens/Processing";
+import ProjectDetailForBuyer from "../screens/ProjectDetailForBuyer";
+import ProjectDetailForBuyer2 from "../screens/ProjectDetailForBuyer2";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +19,10 @@ const AuthenticatedStackNavigation = () => {
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
       <Stack.Screen name="pdfa" component={PostDescriptionForApplying} />
       <Stack.Screen name="applying" component={Applying} />
-      <Stack.Screen name="pdfs" component={ProjectDetailForSeller} />
       <Stack.Screen name="processing" component={Processing} />
+      <Stack.Screen name="pdfs" component={ProjectDetailForSeller} />
+      <Stack.Screen name="pdfb" component={ProjectDetailForBuyer} />
+      <Stack.Screen name="pdfb2" component={ProjectDetailForBuyer2} />
     </Stack.Navigator>
   );
 };
