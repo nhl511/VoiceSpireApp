@@ -55,6 +55,62 @@ export const getOfficialVoices = async (projectId) => {
   const response = await axiosOne.get(
     `/api/VoiceProjects/GetTransactionOfProject/${projectId}`
   );
-  console.log(response.data);
+  return response.data;
+};
+
+export const getCandidates = async (projectId) => {
+  const response = await axiosOne.get(
+    `/api/VoiceProjects/GetListDemoForProject/${projectId}`
+  );
+  return response.data;
+};
+
+export const applyToProject = async (
+  voiceProjectId,
+  voiceSellerId,
+  linkDemo
+) => {
+  const response = await axiosOne.post("/api/VoiceSellers/ApllyToProject", {
+    voiceProjectId,
+    voiceSellerId,
+    linkDemo,
+  });
+  return response.data;
+};
+
+export const acceptDemo = async (voiceJobId, projectId) => {
+  const response = await axiosOne.put(
+    `/api/Buyers/ApproveDemo/${voiceJobId},${projectId}`
+  );
+  return response.data;
+};
+
+export const sendMainVoice = async (
+  voiceProjectId,
+  voiceSellerId,
+  linkVoice
+) => {
+  const response = await axiosOne.post(
+    `/api/VoiceSellers/SendMainVoiceForProject`,
+    {
+      voiceProjectId,
+      voiceSellerId,
+      linkVoice,
+    }
+  );
+  return response.data;
+};
+
+export const sendFeedback = async (transactionId, inputFeedBack) => {
+  const response = await axiosOne.put(
+    `/api/Buyers/RequestEdit/${transactionId}?feedback=${inputFeedBack}`
+  );
+  return response.data;
+};
+
+export const acceptOfficialVoice = async (transactionId) => {
+  const response = await axiosOne.put(
+    `/api/Buyers/AcceptTransaction/${transactionId}`
+  );
   return response.data;
 };

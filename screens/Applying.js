@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Pressable, SafeAreaView, Text } from "react-native";
 import { View } from "react-native";
 import tw from "twrnc";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { applyToProject } from "../api/axios";
+import { AuthContext } from "../context/AuthContext";
 
 const Applying = ({ navigation, route }) => {
   const { item } = route.params;
-
+  const { userInfo } = useContext(AuthContext);
+  const mp3File =
+    "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/voices%2F20231014064304816.mp3?alt=media&token=db188105-f756-427a-b677-b6454780559c";
+  const handleSubmit = async () => {
+    await applyToProject(
+      item.voiceProjectId,
+      userInfo.voiceSeller.voiceSellerId,
+      mp3File
+    );
+    navigation.navigate("tpfs");
+  };
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <View style={tw`flex-row justify-between px-4`}>
@@ -58,7 +70,7 @@ const Applying = ({ navigation, route }) => {
         <Text style={tw`text-center mt-2`}>(Xài Expo nên Ko hoạt động)</Text>
 
         <View style={tw`flex-row justify-center mt-10 mb-10`}>
-          <Pressable onPress={() => {}}>
+          <Pressable onPress={handleSubmit}>
             <View style={tw`bg-[#ffd600] rounded-2xl w-50 p-2`}>
               <View style={tw`flex-row justify-center items-center gap-5`}>
                 <Text style={tw`text-center text-xl font-bold`}>

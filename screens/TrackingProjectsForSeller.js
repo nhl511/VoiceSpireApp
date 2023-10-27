@@ -15,6 +15,8 @@ const TrackingProjectsForSeller = ({ navigation }) => {
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
   useEffect(() => {
     getAllJobsForTracking(1, 100, userInfo.voiceSeller.voiceSellerId).then(
       (jobsData) => {
@@ -22,7 +24,13 @@ const TrackingProjectsForSeller = ({ navigation }) => {
         setLoading(false);
       }
     );
-  }, []);
+  });
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    getAllJobsForTracking(1, 100, userInfo.voiceSeller.voiceSellerId);
+    setRefreshing(false);
+  };
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <Header navigation={navigation} />
@@ -31,7 +39,7 @@ const TrackingProjectsForSeller = ({ navigation }) => {
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <View style={tw`px-4 gap-4 mt-10`}>
+        <View style={tw`flex-1 px-4 gap-4 mt-10`}>
           <FlatList
             data={jobs}
             renderItem={({ item }) => {
@@ -51,6 +59,8 @@ const TrackingProjectsForSeller = ({ navigation }) => {
             ListEmptyComponent={
               <Text style={tw`text-center`}>Chưa có dự án nào</Text>
             }
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
           />
         </View>
       )}

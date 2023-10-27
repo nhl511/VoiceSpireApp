@@ -20,7 +20,7 @@ const Posts = ({ navigation }) => {
       setPosts(postsData);
       setLoading(false);
     });
-  }, []);
+  });
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <Header navigation={navigation} />
@@ -29,7 +29,7 @@ const Posts = ({ navigation }) => {
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <View style={tw`px-4 gap-4 mt-10`}>
+        <View style={tw`flex-1 px-4 gap-4 mt-10`}>
           <FlatList
             data={posts}
             renderItem={({ item }) => {

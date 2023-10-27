@@ -19,13 +19,20 @@ const TrackingProjectsForBuyer = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const { userInfo } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     getAllProjectsForTracking(userInfo.buyer.buyerId).then((userData) => {
       setPosts(userData);
       setLoading(false);
     });
-  }, []);
+  });
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    getAllProjectsForTracking(userInfo.buyer.buyerId);
+    setRefreshing(false);
+  };
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <Header navigation={navigation} />
@@ -34,7 +41,7 @@ const TrackingProjectsForBuyer = ({ navigation }) => {
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <View style={tw`px-4 gap-4 mt-10`}>
+        <View style={tw`flex-1 px-4 gap-4 mt-10`}>
           <FlatList
             data={posts}
             renderItem={({ item }) => {
@@ -56,6 +63,8 @@ const TrackingProjectsForBuyer = ({ navigation }) => {
             ListEmptyComponent={
               <Text style={tw`text-center`}>Chưa có dự án nào</Text>
             }
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
           />
         </View>
       )}

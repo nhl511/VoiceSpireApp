@@ -8,7 +8,6 @@ import ProjectDetailForSeller from "../screens/ProjectDetailForSeller";
 import Processing from "../screens/Processing";
 import ProjectDetailForBuyer from "../screens/ProjectDetailForBuyer";
 import ProjectDetailForBuyer2 from "../screens/ProjectDetailForBuyer2";
-
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
