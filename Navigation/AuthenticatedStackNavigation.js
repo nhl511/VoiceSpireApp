@@ -8,6 +8,7 @@ import ProjectDetailForSeller from "../screens/ProjectDetailForSeller";
 import Processing from "../screens/Processing";
 import ProjectDetailForBuyer from "../screens/ProjectDetailForBuyer";
 import ProjectDetailForBuyer2 from "../screens/ProjectDetailForBuyer2";
+import Profile from "../screens/Profile";
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
@@ -16,6 +17,7 @@ const AuthenticatedStackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
+      <Stack.Screen name="profile" component={Profile} />
       <Stack.Screen name="pdfa" component={PostDescriptionForApplying} />
       <Stack.Screen name="applying" component={Applying} />
       <Stack.Screen name="processing" component={Processing} />
