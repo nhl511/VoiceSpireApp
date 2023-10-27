@@ -11,7 +11,6 @@ const Profile = ({ navigation }) => {
         <Pressable onPress={() => navigation.navigate("Home")}>
           <Ionicons name="arrow-back-outline" size={24} color="black" />
         </Pressable>
-        <Text style={tw`text-xl font-bold`}>Voice Spire</Text>
       </View>
       <View></View>
     </SafeAreaView>

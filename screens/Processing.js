@@ -24,10 +24,9 @@ const Processing = ({ navigation, route }) => {
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
       <View style={tw`flex-row justify-between px-4`}>
-        <Pressable onPress={() => navigation.navigate("tpfs")}>
+        <Pressable onPress={() => navigation.navigate("pdfs", { item })}>
           <Ionicons name="arrow-back-outline" size={24} color="black" />
         </Pressable>
-        <Text style={tw`text-xl font-bold`}>Voice Spire</Text>
       </View>
       <View style={tw`px-8 pt-5`}>
         <Text style={tw`text-2xl mb-10`}>{item.voiceProject.title}</Text>

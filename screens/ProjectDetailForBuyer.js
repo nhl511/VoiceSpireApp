@@ -42,7 +42,6 @@ const ProjectDetailForBuyer = ({ navigation, route }) => {
         <Pressable onPress={() => navigation.navigate("tpfb")}>
           <Ionicons name="arrow-back-outline" size={24} color="black" />
         </Pressable>
-        <Text style={tw`text-xl font-bold`}>Voice Spire</Text>
       </View>
       <ScrollView>
         <View style={tw`px-8 pt-5 gap-2`}>

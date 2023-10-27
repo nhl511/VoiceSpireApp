@@ -27,7 +27,6 @@ const Login = () => {
   }, [email, password]);
 
   const handleLogin = () => {
-    console.log(isLoadingButton);
     login(email, password);
   };
 

@@ -114,3 +114,23 @@ export const acceptOfficialVoice = async (transactionId) => {
   );
   return response.data;
 };
+
+export const getVoiceInfo = async (sellerId) => {
+  const response = await axiosOne.get(`/api/VoiceDetails/${sellerId}`);
+  return response.data;
+};
+
+export const uploadVoiceProfile = async (
+  voiceSellerId,
+  linkVoice,
+  numberOfEdit,
+  price
+) => {
+  const response = await axiosOne.post("/api/VoiceSellers/UploadVoiceProfile", {
+    voiceSellerId,
+    linkVoice,
+    numberOfEdit,
+    price,
+  });
+  return response.data;
+};
