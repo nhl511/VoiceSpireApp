@@ -10,7 +10,7 @@ const Header = ({ navigation }) => {
   const { userInfo } = useContext(AuthContext);
 
   return (
-    <View style={tw`flex-row justify-between items-center px-4`}>
+    <View style={tw`flex-row justify-between items-center px-4 pb-5`}>
       <Pressable onPress={() => navigation.openDrawer()}>
         <Feather name="menu" size={24} color="black" />
       </Pressable>

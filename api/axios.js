@@ -134,3 +134,41 @@ export const uploadVoiceProfile = async (
   });
   return response.data;
 };
+
+export const uploadVoiceProject = async (
+  BuyerId,
+  title,
+  description,
+  price,
+  duration,
+  numberOfEdit,
+  deadline,
+  inputRequest,
+  inputVoiceProperty,
+  inputTextLength,
+  inputVoiceGender,
+  inputVoiceTone,
+  inputVoiceRegion,
+  inputVoiceLocal,
+  inputVoiceInspirational,
+  inputVoiceStress,
+  inputVoicePronuonce,
+  inputVoiceSpeed,
+  linkDocDemo,
+  linkDocMain,
+  linkThumbnail
+) => {
+  const response = await axiosOne.post(
+    `/api/Buyers/UploadVoiceProject/${BuyerId},${title},${description},${price},${duration},${numberOfEdit},${deadline}?request=${inputRequest}&voiceProperty=${inputVoiceProperty}&textLength=${inputTextLength}&voiceGender=${inputVoiceGender}&voiceTone=${inputVoiceTone}&voiceRegion=${inputVoiceRegion}&voiceLocal=${inputVoiceLocal}&voiceInspirational=${inputVoiceInspirational}&voiceStress=${inputVoiceStress}&voicePronuonce=${inputVoicePronuonce}&voiceSpeed=${inputVoiceSpeed}`,
+    { linkDocDemo, linkDocMain, linkThumbnail }
+  );
+  return response.data;
+};
+
+export const getApprovedVoices = async () => {
+  const response = await axiosOne.get(
+    `/api/VoiceDetails/1,100,new,true/GetPage`
+  );
+  const valuesArray = Object.values(response.data.results);
+  return valuesArray;
+};
