@@ -9,6 +9,7 @@ import Processing from "../screens/Processing";
 import ProjectDetailForBuyer from "../screens/ProjectDetailForBuyer";
 import ProjectDetailForBuyer2 from "../screens/ProjectDetailForBuyer2";
 import Profile from "../screens/Profile";
+import Payment from "../screens/Payment";
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
@@ -24,6 +25,7 @@ const AuthenticatedStackNavigation = () => {
       <Stack.Screen name="pdfs" component={ProjectDetailForSeller} />
       <Stack.Screen name="pdfb" component={ProjectDetailForBuyer} />
       <Stack.Screen name="pdfb2" component={ProjectDetailForBuyer2} />
+      <Stack.Screen name="payment" component={Payment} />
     </Stack.Navigator>
   );
 };

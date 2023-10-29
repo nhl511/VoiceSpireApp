@@ -48,6 +48,8 @@ const TrackingProjectsForBuyer = ({ navigation }) => {
               return (
                 <Pressable
                   onPress={() => {
+                    item.projectStatus === "WaitApprove" &&
+                      navigation.navigate("payment", { item });
                     item.projectStatus === "Apply" &&
                       navigation.navigate("pdfb", { item });
                     (item.projectStatus === "Processing" ||
