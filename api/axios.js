@@ -114,3 +114,130 @@ export const acceptOfficialVoice = async (transactionId) => {
   );
   return response.data;
 };
+
+export const getVoiceInfo = async (sellerId) => {
+  const response = await axiosOne.get(`/api/VoiceDetails/${sellerId}`);
+  return response.data;
+};
+
+export const uploadVoiceProfile = async (
+  voiceSellerId,
+  linkVoice,
+  numberOfEdit,
+  price
+) => {
+  const response = await axiosOne.post("/api/VoiceSellers/UploadVoiceProfile", {
+    voiceSellerId,
+    linkVoice,
+    numberOfEdit,
+    price,
+  });
+  return response.data;
+};
+
+export const uploadVoiceProject = async (
+  BuyerId,
+  title,
+  description,
+  price,
+  duration,
+  numberOfEdit,
+  deadline,
+  inputRequest,
+  inputVoiceProperty,
+  inputTextLength,
+  inputVoiceGender,
+  inputVoiceTone,
+  inputVoiceRegion,
+  inputVoiceLocal,
+  inputVoiceInspirational,
+  inputVoiceStress,
+  inputVoicePronuonce,
+  inputVoiceSpeed,
+  linkDocDemo,
+  linkDocMain,
+  linkThumbnail
+) => {
+  const response = await axiosOne.post(
+    `/api/Buyers/UploadVoiceProject/${BuyerId},${title},${description},${price},${duration},${numberOfEdit},${deadline}?request=${inputRequest}&voiceProperty=${inputVoiceProperty}&textLength=${inputTextLength}&voiceGender=${inputVoiceGender}&voiceTone=${inputVoiceTone}&voiceRegion=${inputVoiceRegion}&voiceLocal=${inputVoiceLocal}&voiceInspirational=${inputVoiceInspirational}&voiceStress=${inputVoiceStress}&voicePronuonce=${inputVoicePronuonce}&voiceSpeed=${inputVoiceSpeed}`,
+    { linkDocDemo, linkDocMain, linkThumbnail }
+  );
+  return response.data;
+};
+
+export const getApprovedVoices = async () => {
+  const response = await axiosOne.get(
+    `/api/VoiceDetails/1,100,new,true/GetPage`
+  );
+  const valuesArray = Object.values(response.data.results);
+  return valuesArray;
+};
+
+export const getSellerProfile = async (id) => {
+  const response = await axiosOne.get(`/api/VoiceSellers/${id}`);
+  return response.data;
+};
+
+export const updateSellerProfile = async (
+  voiceSellerId,
+  fullname,
+  phone,
+  email,
+  password,
+  birthDay,
+  introduce,
+  address,
+  gender,
+  avatarLink,
+  rateAvg,
+  bankName,
+  bankNumber,
+  bankAccountName,
+  googleId,
+  status
+) => {
+  const response = await axiosOne.put(`/api/VoiceSellers/${voiceSellerId}`, {
+    voiceSellerId,
+    fullname,
+    phone,
+    email,
+    password,
+    birthDay,
+    introduce,
+    address,
+    gender,
+    avatarLink,
+    rateAvg,
+    bankName,
+    bankNumber,
+    bankAccountName,
+    googleId,
+    status,
+  });
+  return response.data;
+};
+
+export const checkBankAccountForSeller = async (id) => {
+  const response = await axiosOne.get(`/api/VoiceSellers/${id}`);
+  if (
+    !response.data?.bankName ||
+    !response.data?.bankNumber ||
+    !response.data?.bankAccountName
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const updateBankAccountForSeller = async (
+  sellerId,
+  bankNumber,
+  bankName,
+  bankAccoutName
+) => {
+  const response = await axiosOne.put(
+    `/api/VoiceSellers/UpdateBankInformation/${sellerId},${bankNumber},${bankName},${bankAccoutName}`
+  );
+  return response.data;
+};

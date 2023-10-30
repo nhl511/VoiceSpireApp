@@ -32,14 +32,13 @@ const TrackingProjectsForSeller = ({ navigation }) => {
     setRefreshing(false);
   };
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <Header navigation={navigation} />
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
       {loading ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />
         </View>
       ) : (
-        <View style={tw`flex-1 px-4 gap-4 mt-10`}>
+        <View style={tw`flex-1 gap-4 mt-10 px-4`}>
           <FlatList
             data={jobs}
             renderItem={({ item }) => {
@@ -55,7 +54,7 @@ const TrackingProjectsForSeller = ({ navigation }) => {
                 </Pressable>
               );
             }}
-            ItemSeparatorComponent={<View style={tw`h-4`} />}
+            ItemSeparatorComponent={<View style={tw`h-10`} />}
             ListEmptyComponent={
               <Text style={tw`text-center`}>Chưa có dự án nào</Text>
             }

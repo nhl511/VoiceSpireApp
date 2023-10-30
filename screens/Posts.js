@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -10,21 +10,35 @@ import {
 import tw from "twrnc";
 import Header from "../components/Header";
 import PostCard from "../components/PostCard";
-import { getPosts } from "../api/axios";
+import { checkBankAccountForSeller, getPosts } from "../api/axios";
+import { AuthContext } from "../context/AuthContext";
 
 const Posts = ({ navigation }) => {
+  const { userInfo } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(false);
+
   useEffect(() => {
     getPosts(1, 100).then((postsData) => {
       setPosts(postsData);
       setLoading(false);
     });
   });
+  const handleCheck = async (item) => {
+    setLoading2(true);
+    await checkBankAccountForSeller(userInfo.voiceSeller.voiceSellerId).then(
+      (result) => {
+        result
+          ? navigation.navigate("pdfa", { item })
+          : navigation.navigate("UpdateBank");
+      }
+    );
+    setLoading2(false);
+  };
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <Header navigation={navigation} />
-      {loading ? (
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
+      {loading || loading2 ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />
         </View>
@@ -34,11 +48,7 @@ const Posts = ({ navigation }) => {
             data={posts}
             renderItem={({ item }) => {
               return (
-                <Pressable
-                  onPress={() => {
-                    navigation.navigate("pdfa", { item });
-                  }}
-                >
+                <Pressable onPress={() => handleCheck(item)}>
                   <PostCard post={item} />
                 </Pressable>
               );

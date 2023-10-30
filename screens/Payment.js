@@ -3,7 +3,6 @@ import React from 'react'
 import tw from 'twrnc';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
 const Payment = () => {
     return (
         <LinearGradient colors={['#fee66a', '#ffffff']}
