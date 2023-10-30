@@ -5,9 +5,7 @@ import tw from "twrnc";
 
 const Voices = ({ navigation }) => {
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <Header navigation={navigation} />
-    </SafeAreaView>
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}></SafeAreaView>
   );
 };
 

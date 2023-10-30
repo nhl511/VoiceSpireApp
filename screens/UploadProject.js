@@ -74,7 +74,7 @@ const UploadProject = ({ navigation }) => {
   const mainFile =
     "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/docs%2F20231026160640695.docx?alt=media&token=8cc28dfc-72e8-4e8b-9b34-259e3fa5d726";
   const thumbnail =
-    "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/imgs%2F20231026160646895.jpg?alt=media&token=63d19d1c-c0ad-420d-bd65-2da36e3d7d7c";
+    "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/imgs%2F20231030032304488.jpg?alt=media&token=2117681b-352d-4fad-917a-764adbd7ec74";
   const handleDatePicker = (event, selectDate) => {
     const currentDate = selectDate || date;
     setDate(currentDate);
@@ -120,306 +120,299 @@ const UploadProject = ({ navigation }) => {
   };
 
   return (
-    <LinearGradient colors={["#fee66a", "#ffffff"]} style={tw`flex-1`}>
-      <SafeAreaView style={tw`flex-1 android:pt-15`}>
-        <Header navigation={navigation} />
-        <ScrollView>
-          <Text style={tw`text-center font-bold text-2xl uppercase mt-3 px-4`}>
-            Đăng tải thông tin tuyển dụng giọng đọc
-          </Text>
-
-          <View style={tw`mt-5 ml-5`}>
-            <TextInput
-              value={title}
-              onChangeText={setTitle}
-              placeholder="Tiêu đề"
-              style={tw`bg-white py-1 px-3 rounded-full w-90 mb-2 `}
-            />
-            <TextInput
-              value={description}
-              onChangeText={setDescription}
-              placeholder="Mô tả"
-              style={tw`bg-white py-1 px-3 rounded-full w-90 mb-2 `}
-            />
-            <TextInput
-              value={request}
-              onChangeText={setRequest}
-              placeholder="Yêu cầu"
-              style={tw`bg-white py-1 px-3 rounded-full w-90 mb-2 `}
-            />
-          </View>
-          <View style={tw`ml-5`}>
-            <View style={tw`flex-row mt-2`}>
-              <Text style={tw`font-semibold text-5 text-[#878787]`}>
-                Bản demo duyệt giọng nói:
-              </Text>
-              <LinearGradient
-                colors={["#43d100", "#a0cbac"]}
-                style={tw`rounded-lg px-5 ml-3 py-0.5`}
-              >
-                <TouchableOpacity>
-                  <Text style={tw`text-white`}>File demo</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-            </View>
-
-            <View style={tw`flex-row mt-2`}>
-              <Text style={tw`font-semibold text-5 text-[#878787]`}>
-                Văn bản cần đọc:
-              </Text>
-              <LinearGradient
-                colors={["#43d100", "#a0cbac"]}
-                style={tw`rounded-lg px-5 ml-3 py-0.5`}
-              >
-                <TouchableOpacity>
-                  <Text style={tw`text-white`}>File main</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-            </View>
-
-            <View style={tw`flex-row mt-2`}>
-              <Text style={tw`font-semibold text-5 text-[#878787]`}>
-                Thumbnail:
-              </Text>
-              <LinearGradient
-                colors={["#43d100", "#a0cbac"]}
-                style={tw`rounded-lg px-5 ml-3 py-0.5`}
-              >
-                <TouchableOpacity>
-                  <Text style={tw`text-white`}>File thumbnail</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-            </View>
-          </View>
-          <View style={tw`items-center mt-5`}>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Giới tính:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setGender(value)}
-                data={genderList}
-                defaultOption={{ key: "Nam", value: "Nam" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Loại văn bản:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setTypeOfDoc(value)}
-                data={typeOfDocList}
-                defaultOption={{ key: "Quảng cáo", value: "Quảng cáo" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Vùng miền:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setRegion(value)}
-                data={regionList}
-                defaultOption={{ key: "Miền Nam", value: "Miền Nam" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Địa phương:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setLocal(value)}
-                data={localList}
-                defaultOption={{ key: "Hồ Chí Minh", value: "Hồ Chí Minh" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Tone:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setTone(value)}
-                data={toneList}
-                defaultOption={{ key: "3", value: "Vừa" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Phát âm:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setPronounce(value)}
-                data={pronounceList}
-                defaultOption={{ key: "3", value: "Khá" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Độ truyền cảm:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setInspiration(value)}
-                data={pronounceList}
-                defaultOption={{ key: "3", value: "Khá" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Tốc độ đọc:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setSpeed(value)}
-                data={speedList}
-                defaultOption={{ key: "2", value: "Vừa" }}
-              />
-            </View>
-            <View>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Trọng âm:
-              </Text>
-              <SelectList
-                boxStyles={{
-                  width: 360,
-                  backgroundColor: "white",
-                  marginTop: 5,
-                }}
-                setSelected={(value) => setStress(value)}
-                data={pronounceList}
-                defaultOption={{ key: "3", value: "Khá" }}
-              />
-            </View>
-
-            <View style={tw`flex-row  mt-5 px-6`}>
-              <Text
-                style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
-              >
-                Giá:
-              </Text>
-              <TextInput
-                value={price}
-                onChangeText={setPrice}
-                inputMode="numeric"
-                placeholder="Nhập giá (VNĐ/phút)"
-                style={tw`border-2 rounded-lg bg-white w-80 ml-1 mt-2 px-3 flex-2`}
-              />
-            </View>
-            <View style={tw`flex-row  mt-5 px-6`}>
-              <Text
-                style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
-              >
-                Độ dài văn bản:
-              </Text>
-              <TextInput
-                value={textLength}
-                onChangeText={setTextLength}
-                inputMode="numeric"
-                placeholder="Nhập độ dài văn bản"
-                style={tw`border-2 rounded-lg bg-white w-54 ml-1 mt-2 px-3 flex-2`}
-              />
-            </View>
-            <View style={tw`flex-row mt-5 px-6`}>
-              <Text
-                style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
-              >
-                Thời lượng:
-              </Text>
-              <TextInput
-                value={duration}
-                onChangeText={setDuration}
-                inputMode="numeric"
-                placeholder="Nhập thời lượng"
-                style={tw`border-2 rounded-lg bg-white w-62 ml-1 mt-2 px-3 flex-2`}
-              />
-            </View>
-            <View style={tw`flex-row  mt-5 px-6`}>
-              <Text
-                style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
-              >
-                Số lần chỉnh sửa tối đa:
-              </Text>
-              <TextInput
-                value={numberOfEdit}
-                onChangeText={setNumberOfEdit}
-                inputMode="numeric"
-                placeholder="Nhập số lần chỉnh sửa"
-                style={tw`border-2 rounded-lg bg-white w-35 ml-1 mt-2 px-3 flex-2`}
-              />
-            </View>
-            <View style={tw`flex-row mt-5`}>
-              <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
-                Hạn hoàn tất: {selectedDate}
-              </Text>
-              {showDateTimePicker ? (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode="date"
-                  display="default"
-                  onChange={handleDatePicker}
-                />
-              ) : (
-                <TouchableOpacity
-                  onPress={() => setShowDateTimePicker(!showDateTimePicker)}
-                >
-                  <Text style={tw`mt-2 ml-2 text-lg font-bold`}>
-                    Nhấn vào đây
-                  </Text>
-                </TouchableOpacity>
-              )}
-            </View>
-          </View>
-          <TouchableOpacity
-            style={tw`flex items-center my-5`}
-            onPress={handleSubmit}
-          >
-            <Text
-              style={tw`text-center text-xl font-semibold bg-[#FFD600] rounded-md px-10 py-1`}
-            >
-              Hoàn tất
+    <SafeAreaView style={tw`flex-1 bg-white`}>
+      <ScrollView style={tw`mt-5`}>
+        <View style={tw`items-center gap-4`}>
+          <TextInput
+            value={title}
+            onChangeText={setTitle}
+            placeholder="Tiêu đề"
+            style={tw`bg-white py-2 px-4 rounded-lg w-90 mb-2 border text-base `}
+          />
+          <TextInput
+            value={description}
+            onChangeText={setDescription}
+            placeholder="Mô tả"
+            style={tw`bg-white py-2 px-4 rounded-lg w-90 mb-2 border text-base `}
+          />
+          <TextInput
+            value={request}
+            onChangeText={setRequest}
+            placeholder="Yêu cầu"
+            style={tw`bg-white py-2 px-4 rounded-lg w-90 mb-2 border text-base `}
+          />
+        </View>
+        <View style={tw`items-start px-8`}>
+          <View style={tw`flex-row mt-2`}>
+            <Text style={tw`font-semibold text-5 text-[#878787]`}>
+              Bản demo duyệt giọng nói:
             </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+            <LinearGradient
+              colors={["#43d100", "#a0cbac"]}
+              style={tw`rounded-lg px-5 ml-3 py-0.5`}
+            >
+              <TouchableOpacity>
+                <Text style={tw`text-white`}>File demo</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+
+          <View style={tw`flex-row mt-2`}>
+            <Text style={tw`font-semibold text-5 text-[#878787]`}>
+              Văn bản cần đọc:
+            </Text>
+            <LinearGradient
+              colors={["#43d100", "#a0cbac"]}
+              style={tw`rounded-lg px-5 ml-3 py-0.5`}
+            >
+              <TouchableOpacity>
+                <Text style={tw`text-white`}>File main</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+
+          <View style={tw`flex-row mt-2`}>
+            <Text style={tw`font-semibold text-5 text-[#878787]`}>
+              Thumbnail:
+            </Text>
+            <LinearGradient
+              colors={["#43d100", "#a0cbac"]}
+              style={tw`rounded-lg px-5 ml-3 py-0.5`}
+            >
+              <TouchableOpacity>
+                <Text style={tw`text-white`}>File thumbnail</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+        </View>
+        <View style={tw`items-center mt-5`}>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Giới tính:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setGender(value)}
+              data={genderList}
+              defaultOption={{ key: "Nam", value: "Nam" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Loại văn bản:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setTypeOfDoc(value)}
+              data={typeOfDocList}
+              defaultOption={{ key: "Quảng cáo", value: "Quảng cáo" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Vùng miền:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setRegion(value)}
+              data={regionList}
+              defaultOption={{ key: "Miền Nam", value: "Miền Nam" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Địa phương:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setLocal(value)}
+              data={localList}
+              defaultOption={{ key: "Hồ Chí Minh", value: "Hồ Chí Minh" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Tone:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setTone(value)}
+              data={toneList}
+              defaultOption={{ key: "3", value: "Vừa" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Phát âm:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setPronounce(value)}
+              data={pronounceList}
+              defaultOption={{ key: "3", value: "Khá" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Độ truyền cảm:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setInspiration(value)}
+              data={pronounceList}
+              defaultOption={{ key: "3", value: "Khá" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Tốc độ đọc:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setSpeed(value)}
+              data={speedList}
+              defaultOption={{ key: "2", value: "Vừa" }}
+            />
+          </View>
+          <View>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Trọng âm:
+            </Text>
+            <SelectList
+              boxStyles={{
+                width: 360,
+                backgroundColor: "white",
+                marginTop: 5,
+              }}
+              setSelected={(value) => setStress(value)}
+              data={pronounceList}
+              defaultOption={{ key: "3", value: "Khá" }}
+            />
+          </View>
+
+          <View style={tw`flex-row  mt-5 px-6`}>
+            <Text
+              style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
+            >
+              Giá:
+            </Text>
+            <TextInput
+              value={price}
+              onChangeText={setPrice}
+              inputMode="numeric"
+              placeholder="Nhập giá (VNĐ/phút)"
+              style={tw`border rounded-lg px-4 py-2 flex-2`}
+            />
+          </View>
+          <View style={tw`flex-row  mt-5 px-6`}>
+            <Text
+              style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
+            >
+              Độ dài văn bản:
+            </Text>
+            <TextInput
+              value={textLength}
+              onChangeText={setTextLength}
+              inputMode="numeric"
+              placeholder="Nhập độ dài văn bản"
+              style={tw`border rounded-lg px-4 py-2  flex-2`}
+            />
+          </View>
+          <View style={tw`flex-row mt-5 px-6`}>
+            <Text
+              style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
+            >
+              Thời lượng:
+            </Text>
+            <TextInput
+              value={duration}
+              onChangeText={setDuration}
+              inputMode="numeric"
+              placeholder="Nhập thời lượng (phút)"
+              style={tw`border rounded-lg px-4 py-2 flex-2`}
+            />
+          </View>
+          <View style={tw`flex-row  mt-5 px-6`}>
+            <Text
+              style={tw`text-[#878787] text-base font-semibold mt-2 flex-1`}
+            >
+              Số lần chỉnh sửa tối đa:
+            </Text>
+            <TextInput
+              value={numberOfEdit}
+              onChangeText={setNumberOfEdit}
+              inputMode="numeric"
+              placeholder="Nhập số lần chỉnh sửa tối đa"
+              style={tw`border rounded-lg px-4 py-2 flex-2`}
+            />
+          </View>
+          <View style={tw`flex-row mt-5`}>
+            <Text style={tw`text-[#878787] text-5 font-semibold mt-2`}>
+              Hạn hoàn tất: {selectedDate}
+            </Text>
+            {showDateTimePicker ? (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date}
+                mode="date"
+                display="default"
+                onChange={handleDatePicker}
+              />
+            ) : (
+              <TouchableOpacity
+                onPress={() => setShowDateTimePicker(!showDateTimePicker)}
+              >
+                <Text style={tw`mt-2 ml-2 text-lg font-bold`}>
+                  Nhấn vào đây
+                </Text>
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+        <TouchableOpacity
+          style={tw`flex items-center my-5`}
+          onPress={handleSubmit}
+        >
+          <Text
+            style={tw`text-center text-xl font-semibold bg-[#FFD600] rounded-md px-10 py-1`}
+          >
+            Hoàn tất
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

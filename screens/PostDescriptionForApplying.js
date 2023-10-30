@@ -9,12 +9,7 @@ const PostDescriptionForApplying = ({ navigation, route }) => {
   const { item } = route.params;
 
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <View style={tw`flex-row justify-between px-4`}>
-        <Pressable onPress={() => navigation.navigate("Posts")}>
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
-        </Pressable>
-      </View>
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
       <ScrollView>
         <View style={tw` pt-5 px-8`}>
           <Text style={tw`text-xl mb-10`}>{item.title}</Text>

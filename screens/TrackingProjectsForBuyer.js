@@ -34,8 +34,7 @@ const TrackingProjectsForBuyer = ({ navigation }) => {
     setRefreshing(false);
   };
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <Header navigation={navigation} />
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
       {loading ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />

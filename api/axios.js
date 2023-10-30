@@ -172,3 +172,72 @@ export const getApprovedVoices = async () => {
   const valuesArray = Object.values(response.data.results);
   return valuesArray;
 };
+
+export const getSellerProfile = async (id) => {
+  const response = await axiosOne.get(`/api/VoiceSellers/${id}`);
+  return response.data;
+};
+
+export const updateSellerProfile = async (
+  voiceSellerId,
+  fullname,
+  phone,
+  email,
+  password,
+  birthDay,
+  introduce,
+  address,
+  gender,
+  avatarLink,
+  rateAvg,
+  bankName,
+  bankNumber,
+  bankAccountName,
+  googleId,
+  status
+) => {
+  const response = await axiosOne.put(`/api/VoiceSellers/${voiceSellerId}`, {
+    voiceSellerId,
+    fullname,
+    phone,
+    email,
+    password,
+    birthDay,
+    introduce,
+    address,
+    gender,
+    avatarLink,
+    rateAvg,
+    bankName,
+    bankNumber,
+    bankAccountName,
+    googleId,
+    status,
+  });
+  return response.data;
+};
+
+export const checkBankAccountForSeller = async (id) => {
+  const response = await axiosOne.get(`/api/VoiceSellers/${id}`);
+  if (
+    !response.data?.bankName ||
+    !response.data?.bankNumber ||
+    !response.data?.bankAccountName
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const updateBankAccountForSeller = async (
+  sellerId,
+  bankNumber,
+  bankName,
+  bankAccoutName
+) => {
+  const response = await axiosOne.put(
+    `/api/VoiceSellers/UpdateBankInformation/${sellerId},${bankNumber},${bankName},${bankAccoutName}`
+  );
+  return response.data;
+};

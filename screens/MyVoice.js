@@ -36,8 +36,7 @@ const MyVoice = ({ navigation }) => {
   });
 
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <Header navigation={navigation} />
+    <SafeAreaView style={tw`flex-1 bg-white justify-center`}>
       {loading ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />
@@ -45,11 +44,11 @@ const MyVoice = ({ navigation }) => {
       ) : error ? (
         <UploadVoiceCard />
       ) : voice.isApprove ? (
-        <View style={tw`flex-1 justify-center items-center px-4`}>
+        <View style={tw`items-center px-4 `}>
           <ApprovedVoiceCard voice={voice} />
         </View>
       ) : (
-        <View style={tw`flex-1 justify-center items-center px-4`}>
+        <View style={tw`items-center px-4 mt-15`}>
           <WaitApproveVoiceCard voice={voice} />
         </View>
       )}

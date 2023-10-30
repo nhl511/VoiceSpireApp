@@ -4,7 +4,7 @@ import { Image, Text, View } from "react-native";
 import tw from "twrnc";
 const TrackingProjectSellerCard = ({ job }) => {
   return (
-    <View style={tw`flex-row gap-2 h-25 relative`}>
+    <View style={tw`flex-row gap-2 h-25`}>
       <View style={tw`h-full`}>
         <Image
           source={{
@@ -14,7 +14,52 @@ const TrackingProjectSellerCard = ({ job }) => {
           resizeMode="cover"
         />
       </View>
-      <View style={tw`p-2 gap-2`}>
+      <View style={tw`p-2 gap-2 flex-1`}>
+        <View style={tw`flex-row`}>
+          {job.voiceJobStatus === "Applying" && (
+            <View style={tw`bg-[#bdc3c7] py-1 px-2`}>
+              <Text style={tw`text-xs font-bold`}>Demo đang chờ duyệt</Text>
+            </View>
+          )}
+          {job.voiceJobStatus === "Processing" &&
+            job.voiceProject.projectType === "Post" && (
+              <View style={tw`bg-[#2980b9] py-1 px-2`}>
+                <Text style={tw`text-white text-xs font-bold`}>
+                  Demo được chọn
+                </Text>
+              </View>
+            )}
+          {job.voiceJobStatus === "Processing" &&
+            job.voiceProject.projectType === "send" && (
+              <View style={tw`bg-[#2980b9] py-1 px-2`}>
+                <Text style={tw`text-white text-xs font-bold`}>
+                  Đã chấp nhận lời mời
+                </Text>
+              </View>
+            )}
+          {job.voiceJobStatus === "Done" && (
+            <View style={tw`bg-[#2980b9] py-1 px-2`}>
+              <Text style={tw`text-white text-xs font-bold`}>Hoàn thành</Text>
+            </View>
+          )}
+          {job.voiceJobStatus === "waitToAccept" && (
+            <View style={tw`bg-[#2980b9] py-1 px-2`}>
+              <Text style={tw`text-white text-xs font-bold`}>Xem lời mời</Text>
+            </View>
+          )}
+          {job.voiceJobStatus === "Denied" &&
+            job.voiceProject.projectType === "Post" && (
+              <View style={tw`bg-[#bdc3c7] py-1 px-2`}>
+                <Text style={tw`text-xs font-bold`}>Demo không được chọn</Text>
+              </View>
+            )}
+          {job.voiceJobStatus === "Denied" &&
+            job.voiceProject.projectType === "send" && (
+              <View style={tw`bg-[#bdc3c7] py-1 px-2`}>
+                <Text style={tw`text-xs font-bold`}>Đã từ chối lời mời</Text>
+              </View>
+            )}
+        </View>
         <View style={tw`flex-row gap-2`}>
           {job.voiceProject.voiceProperty && (
             <View style={tw`border p-1`}>
@@ -28,7 +73,7 @@ const TrackingProjectSellerCard = ({ job }) => {
             </View>
           )}
         </View>
-        <View>
+        <View style={tw`flex-row`}>
           <Text style={tw`text-base`}>{job.voiceProject.title}</Text>
         </View>
         <View>
@@ -45,47 +90,6 @@ const TrackingProjectSellerCard = ({ job }) => {
           </Text>
         </View>
       </View>
-      {job.voiceJobStatus === "Applying" && (
-        <View style={tw`bg-[#bdc3c7] absolute top-0 right-0 py-1 px-2`}>
-          <Text style={tw`text-xs font-bold`}>Demo đang chờ duyệt</Text>
-        </View>
-      )}
-      {job.voiceJobStatus === "Processing" &&
-        job.voiceProject.projectType === "Post" && (
-          <View style={tw`bg-[#2980b9] absolute top-0 right-0 py-1 px-2`}>
-            <Text style={tw`text-white text-xs font-bold`}>Demo được chọn</Text>
-          </View>
-        )}
-      {job.voiceJobStatus === "Processing" &&
-        job.voiceProject.projectType === "send" && (
-          <View style={tw`bg-[#2980b9] absolute top-0 right-0 py-1 px-2`}>
-            <Text style={tw`text-white text-xs font-bold`}>
-              Đã chấp nhận lời mời
-            </Text>
-          </View>
-        )}
-      {job.voiceJobStatus === "Done" && (
-        <View style={tw`bg-[#2980b9] absolute top-0 right-0 py-1 px-2`}>
-          <Text style={tw`text-white text-xs font-bold`}>Hoàn thành</Text>
-        </View>
-      )}
-      {job.voiceJobStatus === "waitToAccept" && (
-        <View style={tw`bg-[#2980b9] absolute top-0 right-0 py-1 px-2`}>
-          <Text style={tw`text-white text-xs font-bold`}>Xem lời mời</Text>
-        </View>
-      )}
-      {job.voiceJobStatus === "Denied" &&
-        job.voiceProject.projectType === "Post" && (
-          <View style={tw`bg-[#bdc3c7] absolute top-0 right-0 py-1 px-2`}>
-            <Text style={tw`text-xs font-bold`}>Demo không được chọn</Text>
-          </View>
-        )}
-      {job.voiceJobStatus === "Denied" &&
-        job.voiceProject.projectType === "send" && (
-          <View style={tw`bg-[#bdc3c7] absolute top-0 right-0 py-1 px-2`}>
-            <Text style={tw`text-xs font-bold`}>Đã từ chối lời mời</Text>
-          </View>
-        )}
     </View>
   );
 };

@@ -18,11 +18,6 @@ const Header = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("profile")}>
           <View style={tw`flex-row gap-2 items-center`}>
             <Ionicons name="person-outline" size={24} color="black" />
-            <View style={tw`flex-row items-center gap-1`}>
-              <Text style={tw`font-bold text-lg`}>
-                {userInfo.voiceSeller.fullname}
-              </Text>
-            </View>
           </View>
         </TouchableOpacity>
       ) : (
