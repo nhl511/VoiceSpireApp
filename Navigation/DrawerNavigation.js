@@ -14,6 +14,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
 import { Ionicons } from "@expo/vector-icons";
+import Payment from "../screens/Payment";
 
 const Drawer = createDrawerNavigator();
 
