@@ -291,3 +291,10 @@ export const getVoice = async (sellerId) => {
 
   return response.data;
 };
+
+export const getPaymentDetail = async (projectId) => {
+  const response = await axiosOne.get(
+    `/api/VoiceProjects/GetPaymentDetail/${projectId}`
+  );
+  return response.data;
+};

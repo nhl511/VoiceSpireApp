@@ -6,13 +6,21 @@ const TrackingProjectSellerCard = ({ job }) => {
   return (
     <View style={tw`flex-row gap-2 h-25`}>
       <View style={tw`h-full`}>
-        <Image
-          source={{
-            uri: job.voiceProject.linkThumbnail,
-          }}
-          style={tw`h-full w-20`}
-          resizeMode="cover"
-        />
+        {job.voiceProject.linkThumbnail ? (
+          <Image
+            source={{
+              uri: job.voiceProject.linkThumbnail,
+            }}
+            style={tw`h-full w-20`}
+            resizeMode="cover"
+          />
+        ) : (
+          <Image
+            source={require("../assets/logo.png")}
+            style={tw`h-full w-20`}
+            resizeMode="cover"
+          />
+        )}
       </View>
       <View style={tw`p-2 gap-2 flex-1`}>
         <View style={tw`flex-row`}>
