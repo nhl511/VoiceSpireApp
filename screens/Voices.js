@@ -27,36 +27,33 @@ const Voices = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <View style={tw`flex flex-row m-3 bg-[#FCF8C8] p-3 rounded-md`}>
-      <Image
-        source={{ uri: item.voiceSeller.avatarLink }}
-        style={tw`h-30 w-30 rounded-full`}
-      />
-
       <View style={tw`p-3`}>
-        <Text style={tw`font-bold`}>{item.voiceSeller.fullname}</Text>
+        <Text style={tw`font-bold mb-2`}>
+          {item.voiceSeller.fullname} | Giọng {item.voiceGender}
+        </Text>
+
         <AudioPlayer link={item.mainVoiceLink} />
         {item.voiceTypes.map((voiceType, index) => (
-          <Text key={index} style={tw`border-solid border-2 w-20`}>
-            {voiceType.voiceTypeDetail}
-          </Text>
+          <View key={index}>
+            <Text style={tw`italic p-2 m-1`}>{voiceType.voiceTypeDetail}</Text>
+          </View>
         ))}
-        <Text>{item.voiceSeller.rateAvg}</Text>
-        <Text style={tw`font-bold`}>Giá: {item.price} VNĐ/phút</Text>
+
+        <Text style={tw`font-bold mt-2 ml-20`}>Giá: {item.price} VNĐ/phút</Text>
       </View>
 
-      <View style={tw`mt-14 h-10 rounded-full`}>
-        <Button color={'black'} title='Gửi ngay' onPress={handleSendVoice} />
+      <View style={tw`mt-14 ml-7 h-10 bg-[#485460] rounded-full`}>
+        <Button color={'white'} title='Gửi ngay' onPress={handleSendVoice} />
       </View>
     </View>
   )
 
   return (
     <SafeAreaView style={tw`flex-1 bg-[#FEE66C] android:pt-15`}>
-      <Header navigation={navigation} />
       <FlatList
         data={voices}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()} // Sử dụng index làm key
+        keyExtractor={(item, index) => index.toString()}
       />
     </SafeAreaView>
   )
