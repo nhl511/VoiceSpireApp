@@ -9,7 +9,10 @@ import {
 import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import tw from "twrnc";
-import { updateBankAccountForSeller } from "../api/axios";
+import {
+  updateBankAccountForBuyer,
+  updateBankAccountForSeller,
+} from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
 const UpdateBank = ({ navigation }) => {
   const [bankName, setBankName] = useState("");
@@ -20,13 +23,21 @@ const UpdateBank = ({ navigation }) => {
   const handleUpdateBank = () => {
     setLoading(true);
     {
-      userInfo.role === "seller" &&
-        updateBankAccountForSeller(
-          userInfo.voiceSeller.voiceSellerId,
-          bankNumber,
-          bankName,
-          bankAccountName
-        ).then(navigation.goBack());
+      userInfo.role === "seller"
+        ? updateBankAccountForSeller(
+            userInfo.voiceSeller.voiceSellerId,
+            bankNumber,
+            bankName,
+            bankAccountName
+          ).then(navigation.goBack())
+        : userInfo.role === "buyer"
+        ? updateBankAccountForBuyer(
+            userInfo.buyer.buyerId,
+            bankNumber,
+            bankName,
+            bankAccountName
+          ).then(navigation.goBack())
+        : null;
     }
     setLoading(false);
   };

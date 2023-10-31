@@ -36,14 +36,11 @@ const TrackingProjectBuyerCard = ({ post }) => {
             <Text style={tw`text-xs font-bold`}>Không nhận lời mời</Text>
           </View>
         )}
-        {post.projectStatus === "WaitApprove" &&
-          post.paymentStatus === "Pending" && (
-            <View style={tw`bg-[#e74c3c] py-1 px-2`}>
-              <Text style={tw`text-xs font-bold text-white`}>
-                Chờ thanh toán
-              </Text>
-            </View>
-          )}
+        {post.projectStatus === "WaitApprove" && (
+          <View style={tw`bg-[#e74c3c] py-1 px-2`}>
+            <Text style={tw`text-xs font-bold text-white`}>Chờ thanh toán</Text>
+          </View>
+        )}
       </View>
       <View
         style={
@@ -65,13 +62,21 @@ const TrackingProjectBuyerCard = ({ post }) => {
         }
       >
         <View style={tw`h-full`}>
-          <Image
-            source={{
-              uri: post.linkThumbnail,
-            }}
-            style={tw`h-full w-20`}
-            resizeMode="cover"
-          />
+          {post.linkThumbnail ? (
+            <Image
+              source={{
+                uri: post.linkThumbnail,
+              }}
+              style={tw`h-full w-20`}
+              resizeMode="cover"
+            />
+          ) : (
+            <Image
+              source={require("../assets/logo.png")}
+              style={tw`h-full w-20`}
+              resizeMode="cover"
+            />
+          )}
         </View>
         <View style={tw`p-2 gap-2`}>
           <View>

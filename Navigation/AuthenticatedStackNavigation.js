@@ -11,6 +11,7 @@ import ProjectDetailForBuyer2 from "../screens/ProjectDetailForBuyer2";
 import Profile from "../screens/Profile";
 import Payment from "../screens/Payment";
 import UpdateBank from "../screens/UpdateBank";
+import VoiceDetail from "../screens/VoiceDetail";
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
@@ -88,6 +89,7 @@ const AuthenticatedStackNavigation = () => {
           title: "Cập nhật thông tin ngân hàng",
         }}
       />
+      <Stack.Screen name="VoiceDetail" component={VoiceDetail} />
     </Stack.Navigator>
   );
 };

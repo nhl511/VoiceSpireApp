@@ -165,6 +165,25 @@ export const uploadVoiceProject = async (
   return response.data;
 };
 
+export const sendVoiceProject = async (
+  BuyerId,
+  voiceSellerId,
+  title,
+  description,
+  duration,
+  deadline,
+  linkDocDemo,
+  linkDocMain,
+  linkThumbnail,
+  request
+) => {
+  const response = await axiosOne.post(
+    `/api/Buyers/SendVoiceProject/${BuyerId},${voiceSellerId},${title},${description},${duration},${deadline}?request=${request}`,
+    { linkDocDemo, linkDocMain, linkThumbnail }
+  );
+  return response.data;
+};
+
 export const getApprovedVoices = async () => {
   const response = await axiosOne.get(
     `/api/VoiceDetails/1,100,new,true/GetPage`
@@ -230,6 +249,19 @@ export const checkBankAccountForSeller = async (id) => {
   }
 };
 
+export const checkBankAccountForBuyer = async (id) => {
+  const response = await axiosOne.get(`/api/Buyers/${id}`);
+  if (
+    !response.data?.bankName ||
+    !response.data?.bankNumber ||
+    !response.data?.bankAccountName
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 export const updateBankAccountForSeller = async (
   sellerId,
   bankNumber,
@@ -239,5 +271,23 @@ export const updateBankAccountForSeller = async (
   const response = await axiosOne.put(
     `/api/VoiceSellers/UpdateBankInformation/${sellerId},${bankNumber},${bankName},${bankAccoutName}`
   );
+  return response.data;
+};
+
+export const updateBankAccountForBuyer = async (
+  buyerId,
+  bankNumber,
+  bankName,
+  bankAccoutName
+) => {
+  const response = await axiosOne.put(
+    `/api/Buyers/UpdateBankInformation/${buyerId},${bankNumber},${bankName},${bankAccoutName}`
+  );
+  return response.data;
+};
+
+export const getVoice = async (sellerId) => {
+  const response = await axiosOne.get(`/api/VoiceDetails/${sellerId}`);
+
   return response.data;
 };
