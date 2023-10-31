@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Home from "../screens/Home";
 import MyVoice from "../screens/MyVoice";
 import Posts from "../screens/Posts";
 import TrackingProjectsForSeller from "../screens/TrackingProjectsForSeller";
@@ -14,32 +13,23 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { AuthContext } from "../context/AuthContext";
 import { Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity, View } from "react-native";
+import tw from "twrnc";
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigation = () => {
+const DrawerNavigation = ({ navigation }) => {
   const { userInfo } = useContext(AuthContext);
 
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerShown: false,
         drawerActiveBackgroundColor: "#fdf8c8",
         drawerActiveTintColor: "#f39c12",
         drawerLabelStyle: { marginLeft: -15 },
       }}
       drawerContent={(props) => <CustomDrawer {...props} />}
     >
-      <Drawer.Screen
-        name="Home"
-        component={Home}
-        options={{
-          title: "Trang chủ",
-          drawerIcon: ({ color }) => (
-            <Entypo name="home" size={24} color={color} />
-          ),
-        }}
-      />
       {userInfo.role === "seller" && (
         <>
           <Drawer.Screen
@@ -49,6 +39,15 @@ const DrawerNavigation = () => {
               title: "Giọng của tôi",
               drawerIcon: ({ color }) => (
                 <Entypo name="mic" size={24} color={color} />
+              ),
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("profile")}
+                >
+                  <View style={tw`mr-5`}>
+                    <Ionicons name="person-outline" size={24} color="black" />
+                  </View>
+                </TouchableOpacity>
               ),
             }}
           />
@@ -60,6 +59,15 @@ const DrawerNavigation = () => {
               drawerIcon: ({ color }) => (
                 <FontAwesome name="search" size={24} color={color} />
               ),
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("profile")}
+                >
+                  <View style={tw`mr-5`}>
+                    <Ionicons name="person-outline" size={24} color="black" />
+                  </View>
+                </TouchableOpacity>
+              ),
             }}
           />
           <Drawer.Screen
@@ -69,6 +77,15 @@ const DrawerNavigation = () => {
               title: "Theo dõi dự án",
               drawerIcon: ({ color }) => (
                 <Foundation name="results" size={24} color={color} />
+              ),
+              headerRight: () => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("profile")}
+                >
+                  <View style={tw`mr-5`}>
+                    <Ionicons name="person-outline" size={24} color="black" />
+                  </View>
+                </TouchableOpacity>
               ),
             }}
           />

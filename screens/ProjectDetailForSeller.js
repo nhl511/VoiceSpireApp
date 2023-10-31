@@ -36,13 +36,7 @@ const ProjectDetailForSeller = ({ navigation, route }) => {
       });
   });
   return (
-    <SafeAreaView style={tw`flex-1 bg-white android:pt-15`}>
-      <View style={tw`flex-row justify-between px-4`}>
-        <Pressable onPress={() => navigation.navigate("tpfs")}>
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
-        </Pressable>
-        <Text style={tw`text-xl font-bold`}>Voice Spire</Text>
-      </View>
+    <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
       <ScrollView>
         <View style={tw`px-8 pt-5 gap-2`}>
           <Text style={tw`text-2xl mb-4`}>{item.voiceProject.title}</Text>
