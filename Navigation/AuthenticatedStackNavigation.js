@@ -12,6 +12,7 @@ import Profile from "../screens/Profile";
 import Payment from "../screens/Payment";
 import UpdateBank from "../screens/UpdateBank";
 import VoiceDetail from "../screens/VoiceDetail";
+import ProjectDetailForSeller2 from "../screens/ProjectDetailForSeller2";
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
@@ -57,6 +58,13 @@ const AuthenticatedStackNavigation = () => {
       <Stack.Screen
         name="pdfs"
         component={ProjectDetailForSeller}
+        options={{
+          title: "Chi tiết dự án",
+        }}
+      />
+      <Stack.Screen
+        name="pdfs2"
+        component={ProjectDetailForSeller2}
         options={{
           title: "Chi tiết dự án",
         }}

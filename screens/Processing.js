@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Pressable, SafeAreaView, Text, TouchableOpacity } from "react-native";
 import { View } from "react-native";
 import tw from "twrnc";
@@ -9,17 +9,20 @@ import { AuthContext } from "../context/AuthContext";
 import { sendMainVoice } from "../api/axios";
 
 const Processing = ({ navigation, route }) => {
+  const [loading, setLoading] = useState(false);
   const { item } = route.params;
   const { userInfo } = useContext(AuthContext);
   const mp3File =
     "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/voices%2F20231014064304816.mp3?alt=media&token=db188105-f756-427a-b677-b6454780559c";
   const handleSubmit = async () => {
+    setLoading(true);
     await sendMainVoice(
       item.voiceProject.voiceProjectId,
       userInfo.voiceSeller.voiceSellerId,
       mp3File
     );
     navigation.navigate("pdfs", { item });
+    setLoading(false);
   };
   return (
     <SafeAreaView style={tw`flex-1 bg-white android:pt-5`}>
@@ -71,11 +74,23 @@ const Processing = ({ navigation, route }) => {
         <Text style={tw`text-center mt-2`}>(Xài Expo nên Ko hoạt động)</Text>
 
         <View style={tw`flex-row justify-center mt-10 mb-10`}>
-          <TouchableOpacity onPress={handleSubmit}>
-            <View style={tw`bg-[#ffd600] rounded-2xl w-50 p-2`}>
+          <TouchableOpacity onPress={handleSubmit} disabled={loading}>
+            <View
+              style={
+                loading
+                  ? tw`bg-gray-300 rounded-2xl w-60 p-2`
+                  : tw`bg-[#ffd600] rounded-2xl w-50 p-2`
+              }
+            >
               <View style={tw`flex-row justify-center items-center gap-5`}>
-                <Text style={tw`text-center text-xl font-bold`}>
-                  Nộp bản ghi âm
+                <Text
+                  style={
+                    loading
+                      ? tw`text-center text-lg font-bold text-gray-400`
+                      : tw`text-center text-xl font-bold`
+                  }
+                >
+                  {loading ? "Đang nộp bản ghi âm" : "Nộp bản ghi âm"}
                 </Text>
               </View>
             </View>

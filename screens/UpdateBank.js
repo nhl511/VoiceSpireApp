@@ -58,6 +58,7 @@ const UpdateBank = ({ navigation }) => {
           <TextInput
             value={bankNumber}
             onChangeText={setBankNumber}
+            inputMode="numeric"
             style={tw`border flex-2 py-2 px-4`}
             placeholder="Nhập số tài khoản"
           />

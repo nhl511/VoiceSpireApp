@@ -48,6 +48,8 @@ const TrackingProjectsForSeller = ({ navigation }) => {
                     (item.voiceJobStatus === "Processing" ||
                       item.voiceJobStatus === "Done") &&
                       navigation.navigate("pdfs", { item });
+                    item.voiceJobStatus === "waitToAccept" &&
+                      navigation.navigate("pdfs2", { item });
                   }}
                 >
                   <TrackingProjectSellerCard job={item} />

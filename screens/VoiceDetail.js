@@ -24,6 +24,7 @@ const VoiceDetail = ({ route, navigation }) => {
   const [deadline, setDeadline] = useState();
   const [duration, setDuration] = useState();
   const { userInfo } = useContext(AuthContext);
+  const [loading2, setLoading2] = useState(false);
   const demoFile = "";
   const mainFile =
     "https://firebasestorage.googleapis.com/v0/b/voicespire-7162e.appspot.com/o/docs%2F20231030032255353.docx?alt=media&token=40bfcda3-dc6f-4dd3-9bfb-72e5c2e253ea";
@@ -42,6 +43,7 @@ const VoiceDetail = ({ route, navigation }) => {
     });
   }, []);
   const handleSubmit = async () => {
+    setLoading2(true);
     await sendVoiceProject(
       userInfo.buyer.buyerId,
       selectedVoicedSellerId,
@@ -56,10 +58,11 @@ const VoiceDetail = ({ route, navigation }) => {
     );
 
     navigation.navigate("tpfb");
+    setLoading2(false);
   };
   return (
     <SafeAreaView style={tw`flex-1 bg-white `}>
-      {loading ? (
+      {loading || loading2 ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />
         </View>
@@ -158,10 +161,20 @@ const VoiceDetail = ({ route, navigation }) => {
                   <Text style={tw`text-xs`}>VNĐ</Text>
                 </View>
               </View>
-              <TouchableOpacity onPress={handleSubmit}>
-                <View style={tw`bg-yellow-400 py-2`}>
-                  <Text style={tw`text-center text-lg font-bold`}>
-                    Gửi dự án
+              <TouchableOpacity onPress={handleSubmit} disabled={loading2}>
+                <View
+                  style={
+                    loading2 ? tw`bg-gray-300 py-2` : tw`bg-yellow-400 py-2`
+                  }
+                >
+                  <Text
+                    style={
+                      loading2
+                        ? tw`text-lg font-bold text-center text-gray-400`
+                        : tw`text-center text-lg font-bold`
+                    }
+                  >
+                    {loading2 ? "Đang gửi dự án" : "Gửi dự án"}
                   </Text>
                 </View>
               </TouchableOpacity>

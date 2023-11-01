@@ -414,11 +414,16 @@ const UploadProject = ({ navigation }) => {
           <TouchableOpacity
             style={tw`flex items-center my-5`}
             onPress={handleSubmit}
+            disabled={loading}
           >
             <Text
-              style={tw`text-center text-xl font-semibold bg-[#FFD600] rounded-md px-10 py-1`}
+              style={
+                loading
+                  ? tw`text-center text-lg font-semibold bg-gray-300 text-gray-400 rounded-md px-10 py-1`
+                  : tw`text-center text-xl font-semibold bg-[#FFD600] rounded-md px-10 py-1`
+              }
             >
-              Hoàn tất
+              {loading ? "Đang xử lý" : "Đăng tải dự án"}
             </Text>
           </TouchableOpacity>
         </ScrollView>

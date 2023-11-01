@@ -5,6 +5,7 @@ import {
   View,
   Button,
   ActivityIndicator,
+  KeyboardAvoidingView,
 } from "react-native";
 import tw from "twrnc";
 import Header from "../components/Header";
@@ -36,19 +37,24 @@ const MyVoice = ({ navigation }) => {
   });
 
   return (
-    <SafeAreaView style={tw`flex-1 bg-white justify-center`}>
+    <SafeAreaView style={tw`flex-1 bg-white`}>
       {loading ? (
         <View style={tw`flex-1 justify-center items-center`}>
           <ActivityIndicator size="large" />
         </View>
       ) : error ? (
-        <UploadVoiceCard />
+        <KeyboardAvoidingView
+          style={tw`flex-1 justify-start`}
+          behavior="padding"
+        >
+          <UploadVoiceCard />
+        </KeyboardAvoidingView>
       ) : voice.isApprove ? (
-        <View style={tw`items-center px-4 `}>
+        <View style={tw`flex-1  justify-center items-center px-4 `}>
           <ApprovedVoiceCard voice={voice} />
         </View>
       ) : (
-        <View style={tw`items-center px-4 mt-15`}>
+        <View style={tw`flex-1  justify-center items-center px-4 mt-15`}>
           <WaitApproveVoiceCard voice={voice} />
         </View>
       )}

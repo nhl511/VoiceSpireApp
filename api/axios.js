@@ -292,6 +292,20 @@ export const getVoice = async (sellerId) => {
   return response.data;
 };
 
+export const denyVoiceProject = async (projectId) => {
+  const response = await axiosOne.put(
+    `/api/VoiceSellers/DeniesProject/${projectId}`
+  );
+  return response.data;
+};
+
+export const acceptVoiceProject = async (projectId) => {
+  const response = await axiosOne.put(
+    `/api/VoiceSellers/AcceptProject/${projectId}`
+  );
+  return response.data;
+};
+
 export const getPaymentDetail = async (projectId) => {
   const response = await axiosOne.get(
     `/api/VoiceProjects/GetPaymentDetail/${projectId}`
