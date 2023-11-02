@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://voicespireexeapi.azurewebsites.net";
+const BASE_URL = "https://voicespireapi20231102005734.azurewebsites.net";
 
 export default axios.create({
   baseURL: BASE_URL,
